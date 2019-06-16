@@ -115,25 +115,3 @@ class NaiveBayesTextClassifier:
                 self.data_dict[category]['words'][word.lower()] += 1
 
             self.data_dict[category]['data']['total_word_count'] += 1
-
-
-if __name__ == "__main__":
-    y = ['Trump', 'Trump', 'Trump', 'Obama', 'Obama']
-    X = ["Let's stop freaking around and build that damn wall already",
-         "I can't believe people are upset at me for calling shithole countries shithole countries Fake News",
-         "The failing New York Times wrote another article about me full of lies Fake News",
-         "Today we remember and honor our courageous veterans who were willing to sacrifice everything to for the US",
-         "Thank you Hannah McKinley for the work you're doing to progress equality for the LGBT community"]
-    X = [x.split(' ') for x in X]
-    print(X)
-    nbtc = NaiveBayesTextClassifier(X, y)
-    nbtc.train()
-
-    x_test = ["Another attack by the Fake News They're spreading absolute lies about my wonderful meeting with China",
-              "These young people want to take action and make a change We're going to help them see it through",
-              "Really need to stop being such idiots and get it done",
-              "It is my dream that one day everyone will be able to live and work together in peaceful communities"]
-    x_test = [x.split(' ') for x in x_test]
-    y_test = ["Trump", "Obama", "Trump", "Obama"]
-
-    print(nbtc.predict(x_test))
